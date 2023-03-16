@@ -109,7 +109,7 @@ public class SingUpFragment2 extends Fragment {
         String postal = postalcode.getText().toString();
         String address1 = address.getText().toString();
         String phoneNo1 = "";
-        DataClass dataClass = new DataClass(FullName,Country,city1,id1,postal,address1,phoneNo1);
+        DataClass dataClass = new DataClass(FullName,id1,Country,address1,city1,postal,phoneNo1);
 
         FirebaseDatabase.getInstance().getReference("Android Tutorial").child("user").push()
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -35,8 +35,8 @@
 
         <EditText
             android:id="@+id/regFullName"
-            android:layout_width="166dp"
-            android:layout_height="36dp"
+            android:layout_width="168dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="176dp"
             android:ems="10"
@@ -48,12 +48,12 @@
 
         <EditText
             android:id="@+id/regId"
-            android:layout_width="166dp"
-            android:layout_height="36dp"
+            android:layout_width="167dp"
+            android:layout_height="47dp"
             android:layout_marginStart="216dp"
             android:layout_marginTop="176dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -61,12 +61,12 @@
 
         <EditText
             android:id="@+id/regCountry"
-            android:layout_width="168dp"
-            android:layout_height="38dp"
+            android:layout_width="170dp"
+            android:layout_height="51dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="288dp"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -75,11 +75,11 @@
         <EditText
             android:id="@+id/regCity"
             android:layout_width="168dp"
-            android:layout_height="35dp"
+            android:layout_height="49dp"
             android:layout_marginStart="216dp"
             android:layout_marginTop="288dp"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -87,12 +87,12 @@
 
         <EditText
             android:id="@+id/regAddress"
-            android:layout_width="167dp"
-            android:layout_height="37dp"
+            android:layout_width="170dp"
+            android:layout_height="47dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="404dp"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -100,12 +100,12 @@
 
         <EditText
             android:id="@+id/regPostCode"
-            android:layout_width="167dp"
-            android:layout_height="37dp"
+            android:layout_width="171dp"
+            android:layout_height="48dp"
             android:layout_marginStart="216dp"
             android:layout_marginTop="404dp"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
