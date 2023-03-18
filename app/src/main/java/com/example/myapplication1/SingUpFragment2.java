@@ -1,5 +1,7 @@
 package com.example.myapplication1;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,17 +16,21 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -36,17 +42,20 @@ public class SingUpFragment2 extends Fragment {
     private Button button;
     private EditText fullname,country,city,address,id,postalcode;
     Uri uri;
-   // private FirebaseAuth firebaseAuth;
-   // private FirebaseDatabase database;
-   // private DatabaseReference mDatabase;
-   // private static final String USERS = "users";
-  //  private FirebaseAuth mAuth;
-   // private String fullName;
-  //  private String id1;
-  //  private String country1;
-   // private String address1;
-  // private String city1;
-   // private String postal;
+    private ImageButton imageButton;
+    // private FirebaseAuth firebaseAuth;
+    // private FirebaseDatabase database;
+    // private DatabaseReference mDatabase;
+    // private static final String USERS = "users";
+    //  private FirebaseAuth mAuth;
+    // private String fullName;
+    //  private String id1;
+    //  private String country1;
+    // private String address1;
+    // private String city1;
+    // private String postal;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -62,6 +71,9 @@ public class SingUpFragment2 extends Fragment {
         address = view.findViewById(R.id.regAddress);
         id = view.findViewById(R.id.regId);
         postalcode = view.findViewById(R.id.regPostCode);
+        imageButton = view.findViewById(R.id.imageButton);
+
+
         //database = FirebaseDatabase.getInstance();
         //mDatabase = database.getReference(USERS);
         //mAuth = FirebaseAuth.getInstance();
@@ -79,6 +91,32 @@ public class SingUpFragment2 extends Fragment {
         });
 
 
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Delete the current user from Firebase Authentication
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User account deleted.");
+                        } else {
+                            Log.e(TAG, "Error deleting user account: " + task.getException().getMessage());
+                        }
+                    }
+                });
+
+                // Start the new activity
+                Intent intent = new Intent(getActivity(), Login.class);
+                startActivity(intent);
+
+                // Close the current activity
+                getActivity().finish();
+            }
+        });
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +128,9 @@ public class SingUpFragment2 extends Fragment {
 
 
         });
+
+
+
         return view;
     }
     private void saveData() {
@@ -130,6 +171,23 @@ public class SingUpFragment2 extends Fragment {
                 });
 
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "User account deleted.");
+                    } else {
+                        Log.e(TAG, "Error deleting user account: " + task.getException().getMessage());
+                    }
+                }
+            });
+        }
+    }
+
 }
-
-

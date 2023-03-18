@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainerView, new SingUpFragment1())
                 .commit();
- }
+    }
     public void navigateToNextFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragmentContainerView, new SingUpFragment2());

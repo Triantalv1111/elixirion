@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="regFullName" type="id">regFullName</item>
+    <item name="regId" type="id">regId</item>
+    <item name="regAddress" type="id">regAddress</item>
+    <item name="regPostCode" type="id">regPostCode</item>
+    <item name="textView4r2" type="id">textView4r2</item>
+    <item name="textView4" type="id">textView4</item>
+    <item name="textView6" type="id">textView6</item>
+</resources>

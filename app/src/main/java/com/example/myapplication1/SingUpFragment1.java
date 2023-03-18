@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 public class SingUpFragment1 extends Fragment {
 
     private Button button;
+    private ImageButton imageButton;
     private EditText email, pass, confirmpass,phoneNo;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog pd;
@@ -41,6 +43,7 @@ public class SingUpFragment1 extends Fragment {
         button = view.findViewById(R.id.button3);
         email = view.findViewById(R.id.regEmail);
         pass = view.findViewById(R.id.regCountry);
+        imageButton = view.findViewById(R.id.imageButton);
         confirmpass = view.findViewById(R.id.regCity);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,13 @@ public class SingUpFragment1 extends Fragment {
             }
         });
         pd = new ProgressDialog(this.getContext());
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Login.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
@@ -90,10 +100,10 @@ public class SingUpFragment1 extends Fragment {
                     Toast.makeText(requireContext(), "Registration successful!", Toast.LENGTH_LONG).show();
                     ((MainActivity) getActivity()).navigateToNextFragment();
                     // Launch OTP activity to verify phone number
-                   // Intent intent = new Intent(requireContext(), SingUpFragment3.class);
-                   // intent.putExtra("phoneNo", phoneNo1);
-                  //  intent.putExtra("verificationId", task.getResult().getUser().getUid());
-                   // startActivity(intent);
+                    // Intent intent = new Intent(requireContext(), SingUpFragment3.class);
+                    // intent.putExtra("phoneNo", phoneNo1);
+                    //  intent.putExtra("verificationId", task.getResult().getUser().getUid());
+                    // startActivity(intent);
                 } else {
                     // Check if there is any exception
                     Exception exception = task.getException();
